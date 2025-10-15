@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonata | Designer Estratégico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset e Configurações Globais */
+        :root {
+            --cor-primaria: #D4AF37; /* Dourado/Mostarda Sofisticado */
+            --cor-fundo: #111111; /* Preto suave */
+            --cor-fundo-card: #1C1C1C;
+            --cor-texto: #EAEAEA; /* Cinza muito claro */
+            --cor-texto-secundario: #A0A0A0; /* Cinza médio */
+            --cor-borda: #2B2B2B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Utilitários */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 7rem 0;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--cor-texto);
+        }
+
+        h2 span {
+            color: var(--cor-primaria);
+        }
+        
+        p {
+            color: var(--cor-texto-secundario);
+            margin-bottom: 1rem;
+            max-width: 65ch; /* Melhora a legibilidade */
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--cor-primaria);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        /* Cabeçalho */
+        .header {
+            background-color: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .logo span {
+            color: var(--cor-primaria);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--cor-texto);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--cor-primaria);
+            transition: width 0.3s ease-out;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Seção Hero (Início) */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--cor-texto-secundario);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--cor-primaria);
+            padding: 0.9rem 2.5rem;
+            border-radius: 5px;
+            border: 2px solid var(--cor-primaria);
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--cor-primaria);
+            color: var(--cor-fundo);
+            transform: translateY(-3px);
+        }
+        
+        /* Seção Sobre */
+        .about-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Seção Projetos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--cor-fundo-card);
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-color: var(--cor-primaria);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(30%);
+            transition: filter 0.3s ease;
+        }
+        
+        .project-card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-info p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            color: var(--cor-texto-secundario);
+        }
+
+        /* Seção Contato */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Rodapé */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--cor-fundo-card);
+        }
+        .footer p {
+            margin-bottom: 0;
+            color: var(--cor-texto-secundario);
+        }
+
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none; /* Em um projeto real, aqui entraria um menu hamburguer */
+            }
+
+            #hero {
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Jonata<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Designer de Marcas e Interfaces Digitais<span>.</span></h1>
+                    <p class="subtitle">Criando identidades visuais fortes e experiências de usuário que geram valor, clareza e conexão para negócios.</p>
+                    <a href="#projetos" class="btn">Conheça os Projetos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre -->
+        <section id="sobre">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Design como <span>solução</span></h2>
+                    <p>Meu trabalho vai além do visual. É sobre entender profundamente os desafios do seu negócio e traduzir seus objetivos em um design estratégico e funcional. Acredito que a clareza, a simplicidade e a atenção aos detalhes são os pilares para construir marcas e produtos que as pessoas amam usar.</p>
+                    <p>Com um processo colaborativo, mergulho no universo de cada cliente para entregar soluções de design que não apenas se destacam, mas que também impulsionam o crescimento.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Projetos -->
+        <section id="projetos">
+            <div class="container">
+                <h2>Projetos <span>Selecionados</span></h2>
+                <div class="projects-grid">
+                    <!-- Projeto 1 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/1C1C1C/D4AF37?text=Café+Grano" alt="Imagem do Projeto Café Grano">
+                        <div class="project-info">
+                            <h4>Café Grano</h4>
+                            <p>Identidade Visual & Branding</p>
+                        </div>
+                    </div>
+                    <!-- Projeto 2 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/1C1C1C/EAEAEA?text=Fintech+Nexo" alt="Imagem do Projeto Fintech Nexo">
+                        <div class="project-info">
+                            <h4>Fintech Nexo</h4>
+                            <p>UI/UX Design para Aplicativo</p>
+                        </div>
+                    </div>
+                    <!-- Projeto 3 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/1C1C1C/A0A0A0?text=Studio+Calma" alt="Imagem do Projeto Studio Calma">
+                        <div class="project-info">
+                            <h4>Studio Calma</h4>
+                            <p>Web Design & Identidade</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Contato -->
+        <section id="contato">
+            <div class="container">
+                <div class="contact-content">
+                    <h2>Vamos criar algo <span>incrível?</span></h2>
+                    <p>Se você tem um projeto em mente ou gostaria de discutir uma ideia, adoraria ouvir. Envie uma mensagem e vamos iniciar a conversa.</p>
+                    <a href="https://wa.me/5511999998888" target="_blank" class="btn">Chamar no WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jonata | Designer Estratégico.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
